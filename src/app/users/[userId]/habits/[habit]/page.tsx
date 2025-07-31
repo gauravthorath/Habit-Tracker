@@ -1,7 +1,12 @@
 export default async function HabitPage({
 	params,
 }: {
-	params: { userId: string; habit: string };
+	params: Promise<{ userId: string; habit: string }>;
 }) {
-	return <div>Habit Details {params.habit}</div>;
+	const { userId, habit } = await params;
+	return (
+		<div>
+			Habit Details {habit} for user {userId}
+		</div>
+	);
 }
